@@ -17,6 +17,7 @@ namespace Console_Project.Entities
         public double Balance;
         public bool IsAdmin;
         public bool IsBlocked;
+        public static bool IsLogged; 
 
         public int IdGet
         {
@@ -25,8 +26,6 @@ namespace Console_Project.Entities
                 return Id; 
             }
         }
-
-        public static bool IsLogged; 
 
         public string Name
         {

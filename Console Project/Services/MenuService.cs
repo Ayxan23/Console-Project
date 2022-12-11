@@ -24,6 +24,7 @@ namespace Console_Project.Services
 
         public static void UserRegistration()
         {
+            Console.WriteLine("\n(User Registration)");
             name:
             Console.WriteLine("\nPlease enter Name:");
             string name = Console.ReadLine();
@@ -99,6 +100,7 @@ namespace Console_Project.Services
 
         public static void UserLogin()
         {
+            Console.WriteLine("\n(User Login)");
             email:
             Console.WriteLine("\nPlease enter Email:");
             string email = Console.ReadLine();
@@ -130,7 +132,7 @@ namespace Console_Project.Services
             }
             else if (result == false)
             {
-                Console.WriteLine("\nBele bir user movcud deyil!\n");
+                Console.WriteLine("\nEmail veya Password yanlisdir!\n");
             }
             else if (result == true)
             {
@@ -141,6 +143,7 @@ namespace Console_Project.Services
 
         public static void FindUser()
         {
+            Console.WriteLine("\n(Find User)");
             email:
             Console.WriteLine("\nPlease enter Email:");
             string email = Console.ReadLine();
@@ -159,12 +162,14 @@ namespace Console_Project.Services
 
         public static void CheckBalance()
         {
+            Console.WriteLine("\n(Check Balance)");
             _bankService.CheckBalance();
         }
 
 
         public static void TopUpBalance()
         {
+            Console.WriteLine("\n(Top Up Balance)");
             upBalance:
             Console.WriteLine("\nArtirmaq istediyiniz mebleg:");
             bool upBalanceResult = double.TryParse(Console.ReadLine(), out double balance);
@@ -179,6 +184,7 @@ namespace Console_Project.Services
 
         public static void ChangePassword()
         {
+            Console.WriteLine("\n(Change Password)");
             password:
             Console.WriteLine("\nPlease enter Password:");
             string password = Console.ReadLine();
@@ -197,12 +203,14 @@ namespace Console_Project.Services
 
         public static void BankUserList()
         {
+            Console.WriteLine("\n(Bank User List)");
             _bankService.BankUserList();
         }
 
 
         public static void BlockUser()
         {
+            Console.WriteLine("\n(Block User)");
             email:
             Console.WriteLine("\nPlease enter Email:");
             string email = Console.ReadLine();

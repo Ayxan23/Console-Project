@@ -15,7 +15,8 @@ namespace Console_Project
             do
             {
             start:
-                Console.WriteLine("\n1. User Registration");
+                Console.WriteLine("\n (Account Service)");
+                Console.WriteLine("1. User Registration");
                 Console.WriteLine("2. User Login");
                 Console.WriteLine("3. Find User");
                 Console.WriteLine("0. Exit");
@@ -44,15 +45,16 @@ namespace Console_Project
                     goto start;
                 }
             } while (selection != 0 && User.IsLogged != true);
- 
+
 
             if (selection != 0)
             {
                 do
                 { 
                 start2:
-                    Console.WriteLine("\n1. Check Balance");
-                    Console.WriteLine("2. Top up balance");
+                    Console.WriteLine("\n (Bank Service)");
+                    Console.WriteLine("1. Check Balance");
+                    Console.WriteLine("2. Top Up Balance");
                     Console.WriteLine("3. Change Password");
                     Console.WriteLine("4. Bank User List");
                     Console.WriteLine("5. Block User");

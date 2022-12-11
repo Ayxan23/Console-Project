@@ -12,6 +12,7 @@ namespace Console_Project.Services
 
         public void CheckBalance()
         {
+            Console.Write("\nBalance: ");
             User? existed = MenuService.LoggedUser; 
             Console.WriteLine($"{existed.Balance}");
         }
@@ -21,7 +22,7 @@ namespace Console_Project.Services
         {
             User? existed = MenuService.LoggedUser;
             existed.Balance += upBalance;
-            Console.WriteLine(existed.Balance);
+            Console.WriteLine($"\nArtirilmis hali: {existed.Balance}");
         }
 
 
@@ -67,6 +68,8 @@ namespace Console_Project.Services
                     if (user.Email == email)
                     {
                         user.IsBlocked = true;
+                        Console.WriteLine($"\n{user.Name} is blocked");
+                        return;
                     }
                 }
             }
@@ -74,6 +77,7 @@ namespace Console_Project.Services
             {
                 Console.WriteLine("\nYalniz admin olan user istifade ede biler!\n");
             }
+            Console.WriteLine("\nBu email'e sahib olan user yoxdur");
         }
 
 
