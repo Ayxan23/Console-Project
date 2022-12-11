@@ -8,30 +8,20 @@ namespace Console_Project.Entities
 {
     internal class Bank
     {
-        public int Id;
-        public User[] Users;
-        static int id = 0;
+
+        public static User[] Users; 
+        public static int id;
 
         public Bank()
         {
             Users = new User[0];
+            id = 0;
         }
-        
-
-        public void AddUser(User user)
+ 
+        static Bank()
         {
-            Array.Resize(ref Users, Users.Length + 1);
-            Users[Users.Length - 1] = user;
-            user.Id = id++;
-            Id = id;
+            Users = new User[0];
         }
-
-
-        public void IdFinder(User user)
-        {
-            int userId = user.Id;
-        }
-
 
     }
 }

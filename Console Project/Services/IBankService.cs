@@ -9,18 +9,16 @@ namespace Console_Project.Services
 {
     internal interface IBankService
     {
-        User User { get;  }   
 
-        void CheckBalance(User user);
+        void CheckBalance();
 
-        void TopUpBalance(User user);
+        void TopUpBalance(double upBalance);
 
-        void ChangePassword(User user);
+        void ChangePassword(string newPassword);
 
-        void BankUserList(User[] user, bool isAdmin);
+        void BankUserList();
 
-        void BlockUser(string email, bool isAdmin);
-
+        void BlockUser(string email);
 
     }
 }

@@ -9,14 +9,12 @@ namespace Console_Project.Services
 {
     internal interface IAccountService
     {
-        public User[] Users { get; }
 
-        int UserRegistration(string name, string surname, string email, string password, bool isAdmin);
+        bool UserRegistration(string name, string surname, string email, string password, bool isAdmin);
 
-        bool UserLogin(string email, string password);
+        bool? UserLogin(string email, string password);
 
         void FindUser(string email);
-
 
     }
 }

@@ -4,40 +4,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Console_Project.Services
 {
     internal class AccountService : IAccountService
     {
-        User[] _users;
-
-        public User[] Users => _users;
-
-        public AccountService()
-        {
-            _users = new User[0];
-        }
 
         public bool UserRegistration(string name, string surname, string email, string password, bool isAdmin)
         {
-            User userNew = new User(name, surname, email, password, isAdmin);
-
-            foreach (User user in _users)
+            foreach (User user in Bank.Users)
             {
-                if (userNew != user)
+                if (email == user.Email)
                 {
-                    Array.Resize(ref _users, _users.Length + 1);
-                    _users[_users.Length - 1] = userNew;
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            User userNew = new User(name, surname, email, password, isAdmin); 
+            return true;
         }
 
-        public bool UserLogin(string email, string password)
+        public bool? UserLogin(string email, string password)
         {
             User? existed = null;
-            foreach (User user in _users)
+            foreach (User user in Bank.Users)
             {
                 if (user.Email == email && user.Password == password)
                 {
@@ -48,13 +38,19 @@ namespace Console_Project.Services
             {
                 return false;
             }
+            if (existed.IsBlocked == true)
+            {
+                return null;
+            }
+            User.IsLogged = true;
+            MenuService.LoggedUser = existed;
             return true;
         }
 
         public void FindUser(string email)
         {
             User? existed = null;
-            foreach (User user in _users)
+            foreach (User user in Bank.Users)
             {
                 if (user.Email == email)
                 {
@@ -63,15 +59,13 @@ namespace Console_Project.Services
             }
             if (existed != null)
             {
-                Console.WriteLine($"{existed.Name} {existed.Surname}");
+                Console.WriteLine($"Id:{existed.IdGet} {existed.Name} {existed.Surname}");
             }
             else
             {
                 Console.WriteLine(existed);
             }
         }
-
-
 
     }
 }

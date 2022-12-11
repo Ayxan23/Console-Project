@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Console_Project.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,80 @@ using System.Threading.Tasks;
 
 namespace Console_Project.Services
 {
-    internal class BankService
+    internal class BankService : IBankService
     {
+
+        public void CheckBalance()
+        {
+            User? existed = MenuService.LoggedUser; 
+            Console.WriteLine($"{existed.Balance}");
+        }
+
+
+        public void TopUpBalance(double upBalance)
+        {
+            User? existed = MenuService.LoggedUser;
+            existed.Balance += upBalance;
+            Console.WriteLine(existed.Balance);
+        }
+
+
+        public void ChangePassword(string newPassword)
+        {
+            User? existed = MenuService.LoggedUser;
+            if (existed.Password == newPassword)
+            {
+                Console.WriteLine("\nYeni password evvelki ile eynidir!\n");
+            }
+            if (existed.Password != newPassword)
+            {
+                existed.Password = newPassword;
+            }
+        }
+
+
+        public void BankUserList() 
+        {
+            User? existed = MenuService.LoggedUser;
+            if (existed.IsAdmin == true)
+            {
+                Console.WriteLine("\nUsers:");
+                foreach (User user in Bank.Users)
+                {
+                    Console.WriteLine($"Id:{user.IdGet} {user.Name} {user.Surname}");
+                }
+            }
+            else if (existed.IsAdmin == false)
+            {
+                Console.WriteLine("\nYalniz admin olan user istifade ede biler!\n");
+            }
+        }
+
+
+        public void BlockUser(string email)
+        {
+            User? existed = MenuService.LoggedUser;
+            if (existed.IsAdmin == true)
+            {
+                foreach (User user in Bank.Users)
+                {
+                    if (user.Email == email)
+                    {
+                        user.IsBlocked = true;
+                    }
+                }
+            }
+            else if (existed.IsAdmin == false)
+            {
+                Console.WriteLine("\nYalniz admin olan user istifade ede biler!\n");
+            }
+        }
+
+
+        public void LogOut()
+        {
+            User.IsLogged = false;
+        }
+
     }
 }
