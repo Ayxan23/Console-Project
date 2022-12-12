@@ -42,6 +42,9 @@ namespace Console_Project.Services
             if (existed.Password != newPassword)
             {
                 existed.Password = newPassword;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Password yenilendi!");
+                Console.ResetColor();
             }
         }
 
