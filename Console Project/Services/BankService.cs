@@ -80,11 +80,21 @@ namespace Console_Project.Services
                 {
                     if (user.Email == email)
                     {
-                        user.IsBlocked = true;
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"\n{user.Name} is blocked");
-                        Console.ResetColor();
-                        return;
+                        if (user.IsAdmin != true)
+                        {
+                            user.IsBlocked = true;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"\n{user.Name} is blocked");
+                            Console.ResetColor();
+                            return;
+                        }
+                        else if (user.IsAdmin == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Admin admini bloklaya bilmez!");
+                            Console.ResetColor();
+                            return;
+                        }
                     }
                 }
             }
