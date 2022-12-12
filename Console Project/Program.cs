@@ -15,11 +15,15 @@ namespace Console_Project
             do
             {
             start:
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("\n (Account Service)");
+                Console.ResetColor();
                 Console.WriteLine("1. User Registration");
                 Console.WriteLine("2. User Login");
                 Console.WriteLine("3. Find User");
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("0. Exit");
+                Console.ResetColor();
                 bool result = int.TryParse(Console.ReadLine(), out selection);
                 if (result)
                 {
@@ -52,13 +56,19 @@ namespace Console_Project
                 do
                 { 
                 start2:
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine("\n (Bank Service)");
+                    Console.ResetColor();
                     Console.WriteLine("1. Check Balance");
                     Console.WriteLine("2. Top Up Balance");
                     Console.WriteLine("3. Change Password");
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("4. Bank User List");
                     Console.WriteLine("5. Block User");
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("0. Log Out");
+                    Console.ResetColor();
                     bool result = int.TryParse(Console.ReadLine(), out selection);
                     if (result)
                     {

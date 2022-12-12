@@ -13,8 +13,10 @@ namespace Console_Project.Services
         public void CheckBalance()
         {
             Console.Write("\nBalance: ");
-            User? existed = MenuService.LoggedUser; 
+            User? existed = MenuService.LoggedUser;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"{existed.Balance}");
+            Console.ResetColor();
         }
 
 
@@ -22,7 +24,9 @@ namespace Console_Project.Services
         {
             User? existed = MenuService.LoggedUser;
             existed.Balance += upBalance;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine($"\nArtirilmis hali: {existed.Balance}");
+            Console.ResetColor();
         }
 
 
@@ -31,7 +35,9 @@ namespace Console_Project.Services
             User? existed = MenuService.LoggedUser;
             if (existed.Password == newPassword)
             {
-                Console.WriteLine("\nYeni password evvelki ile eynidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Yeni password evvelki ile eynidir!");
+                Console.ResetColor();
             }
             if (existed.Password != newPassword)
             {
@@ -48,12 +54,16 @@ namespace Console_Project.Services
                 Console.WriteLine("\nUsers:");
                 foreach (User user in Bank.Users)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine($"Id:{user.IdGet} {user.Name} {user.Surname}");
+                    Console.ResetColor();
                 }
             }
             else if (existed.IsAdmin == false)
             {
-                Console.WriteLine("\nYalniz admin olan user istifade ede biler!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Yalniz admin olan user istifade ede biler!");
+                Console.ResetColor();
             }
         }
 
@@ -68,16 +78,16 @@ namespace Console_Project.Services
                     if (user.Email == email)
                     {
                         user.IsBlocked = true;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"\n{user.Name} is blocked");
+                        Console.ResetColor();
                         return;
                     }
                 }
             }
-            else if (existed.IsAdmin == false)
-            {
-                Console.WriteLine("\nYalniz admin olan user istifade ede biler!\n");
-            }
-            Console.WriteLine("\nBu email'e sahib olan user yoxdur");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Bu email'e sahib olan user yoxdur!");
+            Console.ResetColor();
         }
 
 

@@ -59,7 +59,9 @@ namespace Console_Project.Services
             }
             if (existed != null)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine($"Id:{existed.IdGet} {existed.Name} {existed.Surname}");
+                Console.ResetColor();
             }
             else
             {

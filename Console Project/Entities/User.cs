@@ -9,7 +9,7 @@ namespace Console_Project.Entities
     internal class User
     {
 
-        int Id;
+        int _id;
         string _name;
         string _surname;
         string _email;
@@ -23,7 +23,7 @@ namespace Console_Project.Entities
         {
             get
             {
-                return Id; 
+                return _id; 
             }
         }
 
@@ -106,7 +106,7 @@ namespace Console_Project.Entities
 
         public User(string name, string surname, string email, string password, bool isAdmin)
         {
-            Id = ++Bank.id;
+            _id = ++Bank.Id;
             Name = name;
             Surname = surname;
             Email = email;

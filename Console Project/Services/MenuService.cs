@@ -24,7 +24,9 @@ namespace Console_Project.Services
 
         public static void UserRegistration()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(User Registration)");
+            Console.ResetColor();
             name:
             Console.WriteLine("\nPlease enter Name:");
             string name = Console.ReadLine();
@@ -34,7 +36,9 @@ namespace Console_Project.Services
             }
             if (name.Length < 3)
             {
-                Console.WriteLine("\nName'in minimum uzunluqu 3 olmalıdır!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Name'in minimum uzunluqu 3 olmalıdır!");
+                Console.ResetColor();
                 goto name;
             }
             surname:
@@ -46,7 +50,9 @@ namespace Console_Project.Services
             }
             if (surname.Length < 3)
             {
-                Console.WriteLine("\nSurname'in minimum uzunluqu 3 olmalıdır!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Surname'in minimum uzunluqu 3 olmalıdır!");
+                Console.ResetColor();
                 goto surname;
             }
             email:
@@ -58,7 +64,9 @@ namespace Console_Project.Services
             }
             if (!checkEmail(email))
             {
-                Console.WriteLine("\nEmail'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Email'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!");
+                Console.ResetColor();
                 goto email;
             }
             password:
@@ -70,7 +78,9 @@ namespace Console_Project.Services
             }
             if (!checkPassword(password))
             {
-                Console.WriteLine("\nPassword'un minimum uzunluq 8 olmalidir, icerisinde minimum 1 herf kicik, minimum 1 herf boyuk olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Password'un minimum uzunluq 8 olmalidir, icerisinde minimum 1 herf kicik, minimum 1 herf boyuk olmalidir!");
+                Console.ResetColor();
                 goto password;
             }
             isAdmin:
@@ -79,7 +89,9 @@ namespace Console_Project.Services
             string Admin = Console.ReadLine();
             if (Admin != "Yes" && Admin != "No")
             {
-                Console.WriteLine("\nPlease enter: Yes or No!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please enter: Yes or No!");
+                Console.ResetColor();
                 goto isAdmin;
             }
             if (Admin == "Yes")
@@ -89,18 +101,24 @@ namespace Console_Project.Services
             bool result = _accountService.UserRegistration(name, surname, email, password, nAdmin);
             if (result == false)
             {
-                Console.WriteLine("\nDuplicate Email ola bilmez!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Duplicate Email ola bilmez!");
+                Console.ResetColor();
             }
             else if (result == true)
             {
-                Console.WriteLine("\nRegistration ugurla tamamlandi!\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nRegistration ugurla tamamlandi!");
+                Console.ResetColor();
             }
         }
 
 
         public static void UserLogin()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(User Login)");
+            Console.ResetColor();
             email:
             Console.WriteLine("\nPlease enter Email:");
             string email = Console.ReadLine();
@@ -110,7 +128,9 @@ namespace Console_Project.Services
             }
             if (!checkEmail(email))
             {
-                Console.WriteLine("\nEmail'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Email'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!");
+                Console.ResetColor();
                 goto email;
             }
             password:
@@ -122,28 +142,38 @@ namespace Console_Project.Services
             }
             if (!checkPassword(password))
             {
-                Console.WriteLine("\nPassword'un minimum uzunluq 8 olmalidir, icerisinde minimum 1 herf kicik, minimum 1 herf boyuk olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Password'un minimum uzunluq 8 olmalidir, icerisinde minimum 1 herf kicik, minimum 1 herf boyuk olmalidir!");
+                Console.ResetColor();
                 goto password;
             }
             bool? result = _accountService.UserLogin(email, password);
             if (result == null)
             {
-                Console.WriteLine("\nUser block olunub!\n");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("User block olunub!");
+                Console.ResetColor();
             }
             else if (result == false)
             {
-                Console.WriteLine("\nEmail veya Password yanlisdir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Email veya Password yanlisdir!");
+                Console.ResetColor();
             }
             else if (result == true)
             {
-                Console.WriteLine("\nLogin oldunuz!\n");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nLogin oldunuz!");
+                Console.ResetColor();
             }
         }
 
 
         public static void FindUser()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(Find User)");
+            Console.ResetColor();
             email:
             Console.WriteLine("\nPlease enter Email:");
             string email = Console.ReadLine();
@@ -153,7 +183,9 @@ namespace Console_Project.Services
             }
             if (!checkEmail(email))
             {
-                Console.WriteLine("\nEmail'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Email'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!");
+                Console.ResetColor();
                 goto email;
             }
             _accountService.FindUser(email);
@@ -162,20 +194,26 @@ namespace Console_Project.Services
 
         public static void CheckBalance()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(Check Balance)");
+            Console.ResetColor();
             _bankService.CheckBalance();
         }
 
 
         public static void TopUpBalance()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(Top Up Balance)");
+            Console.ResetColor();
             upBalance:
             Console.WriteLine("\nArtirmaq istediyiniz mebleg:");
             bool upBalanceResult = double.TryParse(Console.ReadLine(), out double balance);
             if (!upBalanceResult || balance < 0)
             {
-                Console.WriteLine("\nPlease enter valid balance!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please enter valid balance!");
+                Console.ResetColor();
                 goto upBalance;
             }
             _bankService.TopUpBalance(balance);
@@ -184,7 +222,9 @@ namespace Console_Project.Services
 
         public static void ChangePassword()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(Change Password)");
+            Console.ResetColor();
             password:
             Console.WriteLine("\nPlease enter Password:");
             string password = Console.ReadLine();
@@ -194,7 +234,9 @@ namespace Console_Project.Services
             }
             if (!checkPassword(password))
             {
-                Console.WriteLine("\nPassword'un minimum uzunluq 8 olmalidir, icerisində minimum 1 herf kicik, minimum 1 herf boyuk olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Password'un minimum uzunluq 8 olmalidir, icerisində minimum 1 herf kicik, minimum 1 herf boyuk olmalidir!");
+                Console.ResetColor();
                 goto password;
             }
             _bankService.ChangePassword(password);
@@ -203,14 +245,25 @@ namespace Console_Project.Services
 
         public static void BankUserList()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(Bank User List)");
+            Console.ResetColor();
             _bankService.BankUserList();
         }
 
 
         public static void BlockUser()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("\n(Block User)");
+            Console.ResetColor();
+            if (LoggedUser.IsAdmin == false)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Yalniz admin olan user istifade ede biler!");
+                Console.ResetColor();
+                return;
+            }
             email:
             Console.WriteLine("\nPlease enter Email:");
             string email = Console.ReadLine();
@@ -220,7 +273,9 @@ namespace Console_Project.Services
             }
             if (!checkEmail(email))
             {
-                Console.WriteLine("\nEmail'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!\n");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Email'in icerisinde 1 eded '@' ve '.' isaresi olmalidir!");
+                Console.ResetColor();
                 goto email;
             }
             _bankService.BlockUser(email);

@@ -10,12 +10,12 @@ namespace Console_Project.Entities
     {
 
         public static User[] Users; 
-        public static int id;
+        public static int Id;
 
         public Bank()
         {
             Users = new User[0];
-            id = 0;
+            Id = 0;
         }
  
         static Bank()
